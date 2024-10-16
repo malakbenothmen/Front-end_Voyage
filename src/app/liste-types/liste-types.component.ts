@@ -16,7 +16,7 @@ export class ListeTypesComponent implements OnInit{
   constructor(private voyageService : VoyageService){}
   ngOnInit(): void {
     this.voyageService.listeTypes().
-    subscribe(cats => {this.types = cats;
+    subscribe(cats => {this.types = cats._embedded.types;
     console.log(cats);
 });
     
@@ -30,7 +30,7 @@ export class ListeTypesComponent implements OnInit{
 
     chargerCategories(){
       this.voyageService.listeTypes().
-      subscribe(cats => {this.types = cats;
+      subscribe(cats => {this.types = cats._embedded.types;
       console.log(cats);
       });
       }

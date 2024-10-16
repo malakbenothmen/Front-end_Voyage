@@ -17,7 +17,7 @@ export class RechercheParTypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.voyageService.listeTypes().
-subscribe(cats => {this.types = cats 
+subscribe(cats => {this.types = cats ._embedded.types
 });
   }
   onChange() {

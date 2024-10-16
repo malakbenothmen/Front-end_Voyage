@@ -23,12 +23,13 @@ export class UpdateVoyageComponent implements OnInit {
 
   ngOnInit(): void {
     this.voyageService.listeTypes().
-    subscribe(tps => {this.types = tps;
-    console.log(tps);
+    subscribe(tps => {this.types = tps._embedded.types;
+    console.log(this.types);
     });
     this.voyageService.consulterVoyage(this.activatedRoute.snapshot.params['id']).
     subscribe( voy =>{ this.currentVoyage = voy; 
                   this.updatedTypeId =  this.currentVoyage.type.idType;
+                  console.log(this.updatedTypeId);
  } ) ;
     
 
@@ -38,7 +39,6 @@ export class UpdateVoyageComponent implements OnInit {
   updateVoyage()
   { this.currentVoyage.type = this.types.find(cat => cat.idType == this.updatedTypeId)!;
    
-    this.currentVoyage.type = this.voyageService.consulterType(this.updatedTypeId);
     this.voyageService.updateVoyage(this.currentVoyage).subscribe(voy => {
     this.router.navigate(['voyages']); }
       )

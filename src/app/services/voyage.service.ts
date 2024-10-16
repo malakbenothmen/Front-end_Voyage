@@ -15,6 +15,9 @@ headers: new HttpHeaders( {'Content-Type': 'application/json'} )
 })
 export class VoyageService {
 
+  apiURLType: string = 'http://localhost:8080/voyages/type';
+
+
  
   voyages! : Voyage[];
   types! : Type[];
@@ -126,8 +129,8 @@ export class VoyageService {
       return this.types.find(cat => cat.idType == id)!;
       }
 
-      listeTypes():Observable<Type[]>{
-        return this.http.get<Type[]>(apiURL+"/type");
+      listeTypes():Observable<TypeWrapper>{
+        return this.http.get<TypeWrapper>(this.apiURLType);
         }
 
 
@@ -142,7 +145,7 @@ export class VoyageService {
             }
 
             ajouterType( tp: Type):Observable<Type>{
-              return this.http.post<Type>(apiURL+"/type", tp, httpOptions);
+              return this.http.post<Type>(this.apiURLType, tp, httpOptions);
               }
               
         

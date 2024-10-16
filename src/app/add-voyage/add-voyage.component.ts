@@ -24,8 +24,8 @@ export class AddVoyageComponent implements OnInit{
 
   ngOnInit(): void {
     this.voyageService.listeTypes().
-    subscribe(tps => {this.types = tps;
-    console.log(tps);
+    subscribe(tps => {this.types = tps._embedded.types;
+    console.log(this.types);
   });
 
     

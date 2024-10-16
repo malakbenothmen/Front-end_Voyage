@@ -16,7 +16,7 @@ const routes: Routes = [
  {path: "updateVoyage/:id", component: UpdateVoyageComponent},
  {path: "rechercheParType", component : RechercheParTypeComponent},
  {path: "rechercheParDestination", component : RechercheParDestinationComponent},
- {path: "listeTypes", component : ListeTypesComponent},
+ {path: "listeTypes", component : ListeTypesComponent , canActivate:[voyageGuard]},
  {path: 'login', component: LoginComponent},
  {path: 'app-forbidden', component: ForbiddenComponent},
  { path: "", redirectTo: "voyages", pathMatch: "full" }
